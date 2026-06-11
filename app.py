@@ -1,91 +1,3 @@
-
-
-# import streamlit as st
-# import numpy as np
-# import librosa
-# import joblib
-# import tempfile
-
-# MODEL_PATH = "deepfake_audio_detector_lgbm_37.pkl"
-
-# model = joblib.load(MODEL_PATH)
-
-# st.title("🎧 Deepfake Audio Detection")
-# st.write("Upload an audio file to check whether it is Genuine or Deepfake.")
-
-# def extract_features(file_path):
-#     audio, sr = librosa.load(file_path, sr=None)
-
-#     if len(audio) == 0:
-#         audio = np.zeros(2048)
-
-#     if len(audio) < 2048:
-#         audio = np.pad(audio, (0, 2048 - len(audio)))
-
-#     mfcc = librosa.feature.mfcc(y=audio, sr=sr, n_mfcc=40)
-
-#     if mfcc.shape[1] >= 9:
-#         delta = librosa.feature.delta(mfcc)
-#         delta2 = librosa.feature.delta(mfcc, order=2)
-#     else:
-#         delta = np.zeros_like(mfcc)
-#         delta2 = np.zeros_like(mfcc)
-
-#     try:
-#         chroma = librosa.feature.chroma_stft(y=audio, sr=sr)
-#     except:
-#         chroma = np.zeros((12, 1))
-
-#     spectral_centroid = librosa.feature.spectral_centroid(y=audio, sr=sr)
-#     spectral_bandwidth = librosa.feature.spectral_bandwidth(y=audio, sr=sr)
-#     spectral_rolloff = librosa.feature.spectral_rolloff(y=audio, sr=sr)
-#     zcr = librosa.feature.zero_crossing_rate(audio)
-#     rms = librosa.feature.rms(y=audio)
-
-#     features = np.hstack([
-#         np.mean(mfcc, axis=1),
-#         np.mean(delta, axis=1),
-#         np.mean(delta2, axis=1),
-#         np.mean(chroma, axis=1),
-#         np.mean(spectral_centroid),
-#         np.mean(spectral_bandwidth),
-#         np.mean(spectral_rolloff),
-#         np.mean(zcr),
-#         np.mean(rms)
-#     ])
-
-#     return features
-
-# uploaded_file = st.file_uploader("Upload audio file", type=["wav", "mp3", "flac", "ogg"])
-
-# if uploaded_file is not None:
-#     st.audio(uploaded_file)
-
-#     with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio:
-#         temp_audio.write(uploaded_file.read())
-#         temp_path = temp_audio.name
-
-#     features = extract_features(temp_path).reshape(1, -1)
-
-#     prediction = model.predict(features)[0]
-#     probabilities = model.predict_proba(features)[0]
-#     confidence = np.max(probabilities) * 100
-
-#     if prediction == 0:
-#         st.success("Prediction: GENUINE / HUMAN AUDIO")
-#     else:
-#         st.error("Prediction: DEEPFAKE / AI-GENERATED AUDIO")
-
-#     st.metric("Confidence Score", f"{confidence:.2f}%")
-
-#     st.write("Class Probabilities:")
-#     st.write({
-#         "Genuine": f"{probabilities[0] * 100:.2f}%",
-#         "Deepfake": f"{probabilities[1] * 100:.2f}%"
-#     })
-
-
-
 import streamlit as st
 import numpy as np
 import librosa
@@ -186,7 +98,7 @@ def extract_features(file_path):
 
 uploaded_file = st.file_uploader(
     "Upload Speech Audio",
-    type=["wav", "mp3"]
+    type=["wav", "mp3", "ogg", "flac", "m4a"]
 )
 
 if uploaded_file:
