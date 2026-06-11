@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import joblib
 import tempfile
 
-MODEL_PATH = "deepfake_audio_detector_lgbm_37.pkl"
+#MODEL_PATH = "deepfake_audio_detector_lgbm_37.pkl"
+MODEL_PATH = "deepfake_audio_detector_lgbm_augmented_generalized.pkl"
 
 model = joblib.load(MODEL_PATH)
 
