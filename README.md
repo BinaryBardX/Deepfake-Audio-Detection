@@ -159,16 +159,4 @@ Try the live application deployed on Streamlit Community Cloud:
 
 ---
 
-## Future Improvements
-
--   [ ] **In-App Audio Recording**: Implement a voice recording component using Streamlit to test live audio directly.
--   [ ] **Explainable AI (XAI)**: Integrate Grad-CAM or SHAP/LIME to highlight exactly which spectral regions (e.g., high frequencies) trigger the "deepfake" prediction.
--   [ ] **Transformer Integration**: Fine-tune pre-trained models such as **Wav2Vec2** or **HuBERT** for improved generalization on complex voice conversion models.
--   [ ] **Batch Processing**: Allow users to upload directories of audio files and export prediction reports (CSV/JSON).
-
----
-
-## License
-
-This project is licensed under the MIT License.
 
